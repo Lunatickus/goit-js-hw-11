@@ -1,0 +1,9 @@
+* {
+    box-sizing: border-box;
+  }
+
+.search-form {
+    background-color: blue;
+    text-align: center;
+    height: 50px;
+}
