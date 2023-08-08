@@ -30,9 +30,9 @@ function onSearch(event) {
 
     searchApiService.resetPage();
     hideLoadMoreBtn();
+    clearGallery();
 
     searchApiService.fetchImages().then(({ data }) => {
-        clearGallery();
         showSuccessMessage(data);
         renderImageCard(data);
         showEndResultMessage(data);
@@ -93,7 +93,6 @@ function renderImageCard(images) {
 
 function clearGallery() {
     refs.gallery.innerHTML = '';
-    window. scrollTo(0, 0);
 }
 
 function showSuccessMessage({ total }) {
