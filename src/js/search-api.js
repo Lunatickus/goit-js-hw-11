@@ -2,7 +2,7 @@ import axios from "axios";
 
 const API_KEY = '38676991-eca9780ceec23f3471420f73e';
 
-const BASE_URL = `https://pixabay.com/api/?key=${API_KEY}&image_type=photo&orientation=horizontal&safesearch=true&per_page=40`;
+const BASE_URL = "https://pixabay.com/api/";
 
 class SearchApiService {
     constructor() {
@@ -11,7 +11,17 @@ class SearchApiService {
     }
 
     async fetchImages() {
-        return await axios.get(`${BASE_URL}&q=${this.searchQuery}&page=${this.page}`);
+        const params = new URLSearchParams({
+            key: API_KEY,
+            q: this.searchQuery,
+            image_type: "photo",
+            orientation: "horizontal",
+            safesearch: true,
+            per_page: 40,
+            page: this.page,
+        });
+
+        return await axios.get(`${BASE_URL}?${params}`);
     }
 
     incrementPage() {
