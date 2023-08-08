@@ -1,7 +1,7 @@
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
 import { SearchApiService } from "./search-api";
-import { renderImageCard } from "./render-markup";
+import { renderImageCard, clearGallery } from "./render-markup";
 import { showSuccessMessage, showFailureMessage, showEndResultMessage } from "./messages";
 import { hideLoadMoreBtn, smoothScroll, hideLoadMoreBtn } from "./load-more-btn";
 
@@ -62,10 +62,6 @@ function onLoadMore() {
         smoothScroll();
         lightbox.refresh();
     }).catch(error => console.log(error));
-}
-
-function clearGallery() {
-    refs.gallery.innerHTML = '';
 }
 
 export { refs }

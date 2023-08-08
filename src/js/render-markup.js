@@ -30,4 +30,8 @@ function renderImageCard({ hits }) {
     refs.gallery.insertAdjacentHTML("beforeend", markup);
 }
 
-export { renderImageCard };
+function clearGallery() {
+    refs.gallery.innerHTML = '';
+}
+
+export { renderImageCard, clearGallery };
