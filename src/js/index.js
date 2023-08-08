@@ -58,8 +58,7 @@ function onLoadMore() {
     }).catch(error => console.log(error));
 }
 
-function renderImageCard(images) {
-    const { hits } = images;
+function renderImageCard({ hits }) {
     const markup = hits.map(( {webformatURL, largeImageURL, tags, likes, views, comments, downloads} ) => {
         return  `<div class="photo-card">
         <a href="${largeImageURL}" alt="${tags}" class="card-link">
