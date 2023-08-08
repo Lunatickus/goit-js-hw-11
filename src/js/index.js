@@ -33,9 +33,13 @@ function onSearch(event) {
 
     searchApiService.fetchImages().then(({ data }) => {
         clearGallery();
-        showMessage(data);
+        showSuccessMessage(data);
         renderImageCard(data);
-    }).catch(error => console.log(error));
+        showEndResultMessage(data);
+    }).catch(error => {
+        console.log(error);
+        showFailureMessage();
+    });
 }
 
 function onLoadMore() {
@@ -92,25 +96,26 @@ function clearGallery() {
     window. scrollTo(0, 0);
 }
 
-function showMessage({ total }) {
-    if(total > 0) {
-        Notiflix.Notify.success(`Hooray! We found ${total} images.`);
-        showLoadMoreBtn();
-        return;
+function showSuccessMessage({ total }) {
+    if(total === 0) {
+        throw new Error('invalid request');
     }
 
+    Notiflix.Notify.success(`Hooray! We found ${total} images.`);
+    showLoadMoreBtn();
+}
+
+function showFailureMessage() {
     Notiflix.Notify.failure("Sorry, there are no images matching your search query. Please try again.");
 }
 
 function showEndResultMessage({ total }) {
-    const photoCrdsOnPage = document.querySelectorAll('.photo-card');
+    const photoCardsOnPage = document.querySelectorAll('.photo-card');
 
-    if(photoCrdsOnPage.length === total) {
+    if(photoCardsOnPage.length === total) {
         Notiflix.Notify.info("We're sorry, but you've reached the end of search results.");
         hideLoadMoreBtn();
     }
-
-    return;
 }
 
 function hideLoadMoreBtn() {
