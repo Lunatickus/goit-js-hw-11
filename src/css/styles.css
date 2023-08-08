@@ -1,9 +1,67 @@
 * {
     box-sizing: border-box;
-  }
+}
+
+body {
+  text-align: center;
+  color: black;
+}
 
 .search-form {
-    background-color: blue;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: darkblue;
     text-align: center;
     height: 50px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.form-input {
+  height: 30px;
+  width: 400px;
+  border-radius: 5px;
+  outline: none;
+}
+
+.form-submit {
+  height: 30px;
+  border-radius: 5px;
+}
+
+.load-more {
+  width: 150px;
+  height: 40px;
+  font-size: 24px;
+  background-color: darkblue;
+  color: white;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  gap: 30px;
+  margin-top: 60px;
+}
+
+.card-link {
+  color: currentColor;
+  text-decoration: none;
+}
+
+.photo-card {
+  border: 1px solid gray;
+}
+
+.info {
+  display: flex;
+  justify-content: space-around;
+}
+
+.info-item b {
+  display: block;
 }
